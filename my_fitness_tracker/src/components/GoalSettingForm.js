@@ -7,7 +7,7 @@ const GoalSettingForm = ({ setGoals }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-   
+
     setGoals({
       stepGoal: parseInt(stepGoal),
       calorieGoal: parseInt(calorieGoal),
