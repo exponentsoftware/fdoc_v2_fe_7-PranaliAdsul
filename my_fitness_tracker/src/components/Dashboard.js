@@ -10,6 +10,10 @@ import Insights from './Insights';
 const Dashboard = () => {
   const [goals, setGoals] = useState(null);
 
+  const handleGoalSetting = (newGoals) => {
+    setGoals(newGoals);
+  };
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Dashboard</h1>
@@ -27,18 +31,19 @@ const Dashboard = () => {
           <ActivityList />
         </div>
         <div style={styles.gridItem}>
-          <GoalSettingForm setGoals={setGoals} />
+          <GoalSettingForm setGoals={handleGoalSetting} />
         </div>
         <div style={styles.gridItem}>
           <ProgressTracker />
         </div>
         <div style={styles.gridItem}>
-          <Insights />
+          <Insights goals={goals} />
         </div>
       </div>
     </div>
   );
 };
+
 
 const styles = {
   container: {
@@ -58,13 +63,12 @@ const styles = {
   },
   gridContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gridGap: '10px',
+    gridGap: '20px',
     width: '90%',
     maxWidth: '1000px',
   },
   gridItem: {
-    backgroundColor: '#ffe169',
+    backgroundColor: '#dcf5f4',
     borderRadius: '10px',
     padding: '20px',
     color: '#000000',
@@ -78,7 +82,7 @@ const styles = {
 styles.gridContainer = {
   ...styles.gridContainer,
   '@media (max-width: 768px)': {
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    // gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
   },
   '@media (max-width: 480px)': {
     gridTemplateColumns: '1fr',
